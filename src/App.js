@@ -82,105 +82,125 @@ function App() {
       <button id="btn" onClick={saveTask}>
         save
       </button>
-      <ol>
-        {tasks
-          .filter((task) => task.instage === "TODO")
-          .map((task) => (
-            <li key={task.id}>
-              <span className="list">{task.name}</span>
-              <button className="delete" onClick={() => deleteTask(task.id)}>
-                delete
-              </button>
-              <button className="edit" onClick={() => edit(task.id)}>
-                edit
-              </button>
-              {selectedTask === task.id ? (
-                <>
-                  <textarea
-                    ref={editedTask}
-                    value={editedTaskString}
-                    onChange={handleEdit}
-                    className="editTask"
-                    rows="4"
-                    cols="50"
-                  ></textarea>
+      <div className="colm">
+        <div className="todo">
+          todo:
+          <ol>
+            {tasks
+              .filter((task) => task.instage === "TODO")
+              .map((task) => (
+                <li key={task.id}>
+                  <span className="list">{task.name}</span>
                   <button
-                    className="saveTask"
-                    onClick={() => editTask(task.id)}
+                    className="delete"
+                    onClick={() => deleteTask(task.id)}
                   >
-                    save
+                    delete
                   </button>
-                </>
-              ) : null}
-            </li>
-          ))}
-      </ol>
-      <ol>
-        {tasks
-          .filter((task) => task.instage === "IN PROGRESS")
-          .map((task) => (
-            <li key={task.id}>
-              <span className="list">{task.name}</span>
-              <button className="delete" onClick={() => deleteTask(task.id)}>
-                delete
-              </button>
-              <button className="edit" onClick={() => edit(task.id)}>
-                edit
-              </button>
-              {selectedTask === task.id ? (
-                <>
-                  <textarea
-                    ref={editedTask}
-                    value={editedTaskString}
-                    onChange={handleEdit}
-                    className="editTask"
-                    rows="4"
-                    cols="50"
-                  ></textarea>
+                  <button className="edit" onClick={() => edit(task.id)}>
+                    edit
+                  </button>
+                  {selectedTask === task.id ? (
+                    <>
+                      <textarea
+                        ref={editedTask}
+                        value={editedTaskString}
+                        onChange={handleEdit}
+                        className="editTask"
+                        rows="4"
+                        cols="50"
+                      ></textarea>
+                      <button
+                        className="saveTask"
+                        onClick={() => editTask(task.id)}
+                      >
+                        save
+                      </button>
+                    </>
+                  ) : null}
+                </li>
+              ))}
+          </ol>
+        </div>
+        <div className="inProgress">
+          in Progress:
+          <ol>
+            {tasks
+              .filter((task) => task.instage === "IN PROGRESS")
+              .map((task) => (
+                <li key={task.id}>
+                  <span className="list">{task.name}</span>
                   <button
-                    className="saveTask"
-                    onClick={() => editTask(task.id)}
+                    className="delete"
+                    onClick={() => deleteTask(task.id)}
                   >
-                    save
+                    delete
                   </button>
-                </>
-              ) : null}
-            </li>
-          ))}
-      </ol>
-      <ol>
-        {tasks
-          .filter((task) => task.instage === "DONE")
-          .map((task) => (
-            <li key={task.id}>
-              <span className="list">{task.name}</span>
-              <button className="delete" onClick={() => deleteTask(task.id)}>
-                delete
-              </button>
-              <button className="edit" onClick={() => edit(task.id)}>
-                edit
-              </button>
-              {selectedTask === task.id ? (
-                <>
-                  <textarea
-                    ref={editedTask}
-                    value={editedTaskString}
-                    onChange={handleEdit}
-                    className="editTask"
-                    rows="4"
-                    cols="50"
-                  ></textarea>
+                  <button className="edit" onClick={() => edit(task.id)}>
+                    edit
+                  </button>
+                  {selectedTask === task.id ? (
+                    <>
+                      <textarea
+                        ref={editedTask}
+                        value={editedTaskString}
+                        onChange={handleEdit}
+                        className="editTask"
+                        rows="4"
+                        cols="50"
+                      ></textarea>
+                      <button
+                        className="saveTask"
+                        onClick={() => editTask(task.id)}
+                      >
+                        save
+                      </button>
+                    </>
+                  ) : null}
+                </li>
+              ))}
+          </ol>
+        </div>
+        <div className="done">
+          Done:
+          <ol>
+            {tasks
+              .filter((task) => task.instage === "DONE")
+              .map((task) => (
+                <li key={task.id}>
+                  <span className="list">{task.name}</span>
                   <button
-                    className="saveTask"
-                    onClick={() => editTask(task.id)}
+                    className="delete"
+                    onClick={() => deleteTask(task.id)}
                   >
-                    save
+                    delete
                   </button>
-                </>
-              ) : null}
-            </li>
-          ))}
-      </ol>
+                  <button className="edit" onClick={() => edit(task.id)}>
+                    edit
+                  </button>
+                  {selectedTask === task.id ? (
+                    <>
+                      <textarea
+                        ref={editedTask}
+                        value={editedTaskString}
+                        onChange={handleEdit}
+                        className="editTask"
+                        rows="4"
+                        cols="50"
+                      ></textarea>
+                      <button
+                        className="saveTask"
+                        onClick={() => editTask(task.id)}
+                      >
+                        save
+                      </button>
+                    </>
+                  ) : null}
+                </li>
+              ))}
+          </ol>
+        </div>
+      </div>
     </div>
   );
 }
